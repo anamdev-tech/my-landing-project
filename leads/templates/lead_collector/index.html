@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ল্যান্ডিং পেজ | রেজিস্ট্রেশন</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <style>
+        body { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+    </style>
+</head>
+<body>
+
+    <div class="container d-flex flex-column align-items-center justify-content-center min-vh-100">
+        <div class="text-center mb-4">
+            <h1 class="fw-bold text-primary display-4">এক্সক্লুসিভ মেম্বারশিপে যুক্ত হোন!</h1>
+            <p class="text-muted fs-5">আপনার সঠিক নাম ও ইমেল দিয়ে এখনই প্রি-রেজিস্ট্রেশন সম্পূর্ণ করুন।</p>
+        </div>
+
+        <div class="card p-4 shadow border-0" style="max-width: 450px; width: 100%; border-radius: 15px;">
+            <form method="POST">
+                {% csrf_token %} 
+                          {% if messages %}
+    {% for message in messages %}
+        <div style="color: green; font-weight: bold; margin-bottom: 15px; text-align: center;">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold text-secondary">আপনার নাম</label>
+                    {{ form.name }}
+                </div>
+                <div style="margin-bottom: 15px;">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+    </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold text-secondary">ইমেল এড্রেস</label>
+                    {{ form.email }}
+                </div>
+                <div style="margin-bottom: 15px;">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    </div>
+                <button type="submit" class="btn btn-primary w-100 py-2.5 fs-5 shadow-sm" style="border-radius: 8px;">সাবমিট করুন</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
